@@ -7,8 +7,11 @@
 @endforeach
 @endif-->
 
-
-
+@if(session('msg'))
+<span class='success-msg'>{{session('msg')}}</span>
+@endif
+<?php // {{session()->keep('msg')}} ?>
+{{session()->reflash()}}
 <form action="adduser" method="POST">
     @csrf
     <div class="inputform">
@@ -55,6 +58,12 @@
         border:1px red solid;
         color:red 
 
+    }
+</style>
+<style>
+    .success-msg{
+        border:1px green solid;
+        color:green 
     }
 </style>
 <h3>{{URL::full()}}</h3>

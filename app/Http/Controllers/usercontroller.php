@@ -8,6 +8,9 @@ class usercontroller extends Controller
 {
     //
     function addUser(Request $req){
+        $req->session()->flash('msg','user added successfully');
+        
+        
         $req->validate([
             'username'=>'required | min:3 |max:20',
             'email'=>'required | email | lowercase',
@@ -19,21 +22,22 @@ class usercontroller extends Controller
            'username.min'=>'username should be not more than 20 characters',
            'email.email'=>'email not valid'
         ]);
-        echo "Hello";
-        echo "User added successfully";
-        echo "<br>";
+        return redirect('user-form');
+        //echo "Hello";
+        //echo "User added successfully";
+        //echo "<br>";
         //return $req;
-        echo "User name is $req->username";
-        echo "<br>";
-        echo "User email is $req->email";
-        echo "<br>";
-        echo "User job is $req->job";
-        echo "<br>";
-        echo "User age is $req->age";
-        echo "<br>";
-        echo "User skill is ";
-        print_r($req->skill);
-        echo "ip is ". $req->ip();
+        //echo "User name is $req->username";
+        //echo "<br>";
+       // echo "User email is $req->email";
+        //echo "<br>";
+        //echo "User job is $req->job";
+       // echo "<br>";
+       // echo "User age is $req->age";
+       // echo "<br>";
+       // echo "User skill is ";
+       // print_r($req->skill);
+        //echo "ip is ". $req->ip();
         
         
 
